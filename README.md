@@ -8,3 +8,5 @@ https://github.com/gradle/gradle/issues/4007
 
 You should see publishListing* tasks appear from the 
 class PlayPublisherPlugin implements Plugin<Project> 
+
+plugin.xml is for cordova and not used by this example - just here for reference.
