@@ -4,4 +4,7 @@ Apply Plugin in Apply From can't see outer Classpath because ClassLoader Scoping
 
 https://github.com/gradle/gradle/issues/4007
 
-gradlew --stacktrace --info --no-build-cache --refresh-dependencies --no-daemon --rerun-tasks tasks
+`gradlew --stacktrace --info --no-build-cache --refresh-dependencies --no-daemon --rerun-tasks tasks`
+
+You should see publishListing* tasks appear from the 
+class PlayPublisherPlugin implements Plugin<Project> 
