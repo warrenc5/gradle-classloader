@@ -1,0 +1,33 @@
+configurations.all {
+  resolutionStrategy {
+    cacheChangingModulesFor 0, 'seconds'
+      cacheDynamicVersionsFor 0, 'seconds'
+  }
+}
+buildscript {
+  repositories {
+    mavenCentral()
+      jcenter()
+      maven {
+        url "https://maven.google.com"
+      }
+    maven {
+      url "http://blue:8081/nexus/content/repositories/snapshots/"
+    }
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.0.0'
+    //classpath 'com.github.triplet.gradle:play-publisher:1.2.0'
+  }
+}
+
+
+apply plugin: 'com.android.application'
+
+println "1-------------->" +this.class.getClassLoader()
+println "2-------------->" +this.class.getClassLoader().getParent()
+println "3-------------->" +this.class.getClassLoader().getParent().getParent()
+println "4-------------->" +this.class.getClassLoader().getParent().getParent().getParent()
+// PLUGIN GRADLE EXTENSIONS START
+apply from: "sub.gradle"

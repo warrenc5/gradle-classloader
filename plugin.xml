@@ -1,0 +1,14 @@
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="play-deploy"
+    version="1.0.0">
+<name>play-deploy</name>
+
+<engines>
+  <engine name="cordova-android" version=">=1.4.0" />
+</engines>
+
+<framework src="com.github.triplet.gradle:play-publisher:1.2.1-SNAPSHOT" />
+<framework src="build.gradle" custom="true" type="gradleReference" />
+</plugin>
+

@@ -1,0 +1,69 @@
+configurations.all {
+  resolutionStrategy {
+preferProjectModules()
+
+    cacheChangingModulesFor 0, 'seconds'
+    cacheDynamicVersionsFor 0, 'seconds'
+  }
+}
+
+buildscript {
+/**
+plugins{
+id: 'com.github.triplet.gradle:play-publisher:1.2.1-SNAPSHOT'
+}
+**/
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.0.0'
+    classpath 'com.github.triplet.gradle:play-publisher:1.2.1-SNAPSHOT'
+  }
+
+  repositories {
+    mavenCentral()
+      jcenter()
+      maven {
+        url "https://maven.google.com"
+      }
+      maven {
+        url "http://blue:8081/nexus/content/repositories/snapshots/"
+      }
+  }
+}
+
+android {
+  compileSdkVersion = 22
+}
+
+println "--------------->" +this.class.getClassLoader()
+println "--------------->" +this.class.getClassLoader().getParent()
+println "--------------->" +this.class.getClassLoader().getParent().getParent()
+
+//pluginManager.apply('com.github.triplet.playde.triplet.gradle.play.PlayPublisherPlugin')
+apply plugin: de.triplet.gradle.play.PlayPublisherPlugin
+//apply plugin: 'com.github.triplet.play'
+
+android {
+
+  playAccountConfigs {
+    defaultAccountConfig {
+      jsonFile = file('../../file.json')
+    }
+  }
+
+  defaultConfig {
+
+  compileSdkVersion = 16
+    playAccountConfig = playAccountConfigs.defaultAccountConfig
+  }
+
+  packagingOptions {
+    pickFirst "anyFileWillDo"
+      exclude "/META-INF/**"
+  }
+}
+
+play {
+  track = 'beta'
+    untrackOld = true // will untrack 'alpha' while upload to 'beta'
+}
+
